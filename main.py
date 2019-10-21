@@ -1,6 +1,7 @@
 from dialog_bot_sdk.bot import DialogBot
 import grpc
 from dialog_bot_sdk import interactive_media, messaging
+import DataBase
 global p 
 
 def on_msg(*params):
@@ -51,7 +52,8 @@ def on_click(*params):
     print(params[0])
     which_button = params[0].value
     if which_button == "Yes":
-        bot.messaging.update_message(p, text = "Всё супер")
+        DataBase.insert_id(params[0].uid)
+       # bot.messaging.update_message(p, text = "Всё супер")
     #id = params[0].uid
     #peer = {type: PEERTYPE_PRIVATE, id: id, str_id {}}
     #if which_button == "feedback":
